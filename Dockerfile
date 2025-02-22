@@ -44,6 +44,6 @@ VOLUME ["/app/data"]
 
 ENV PATH=/root/.local/bin:$PATH
 
-HEALTHCHECK --interval=30s --timeout=10s CMD curl --fail http://localhost:8081/healthstatus || exit 1
+HEALTHCHECK --interval=120s --timeout=10s CMD curl --fail http://localhost:8081/healthstatus || exit 1
 
 CMD ["uvicorn", "kosync:app", "--host", "0.0.0.0", "--port", "8081"]
