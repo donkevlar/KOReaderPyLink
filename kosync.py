@@ -7,7 +7,7 @@ from typing import Optional
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Header
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from tinydb import Query, TinyDB
 
@@ -35,6 +35,12 @@ class KosyncDocument(BaseModel):
     percentage: Optional[float] = None
     device: Optional[str] = None
     device_id: Optional[str] = None
+
+
+# redirects to healthstatus when no endpoint is used.
+@app.get("/", include_in_schema=False)  # Hide from OpenAPI docs
+def root():
+    return RedirectResponse(url="/healthstatus")
 
 
 @app.post("/users/create")
