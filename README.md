@@ -29,7 +29,6 @@ Set to True (enabled) by default.
 
 ### Prerequisites
 - Install [Docker](https://docs.docker.com/get-docker/)
-- Install [Docker Compose](https://docs.docker.com/compose/install/) (optional)
 
 ### Steps
 1. Clone the repository:
@@ -41,26 +40,6 @@ Set to True (enabled) by default.
    ```sh
    docker build -t koreaderpylink .
    docker run -d -v $(pwd)/data:/app/data -p 8081:8081 --name koreaderpylink      -e RECEIVE_RANDOM_DEVICE_ID="False"      -e OPEN_REGISTRATIONS="True"      koreaderpylink
-   ```
-
-### Using Docker Compose (Optional)
-1. Copy `docker-compose.yml` (if provided) or create one:
-   ```yaml
-   version: '3'
-   services:
-     koreaderpylink:
-       build: .
-       ports:
-         - "8081:8081"
-       volumes:
-         - ./data:/app/data
-       environment:
-         - RECEIVE_RANDOM_DEVICE_ID=False
-         - OPEN_REGISTRATIONS=True
-   ```
-2. Start the service:
-   ```sh
-   docker-compose up -d
    ```
 
 ### Installing through Unraid Template
