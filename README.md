@@ -1,4 +1,7 @@
-# Koreader position sync server
+# KOReaderPyLink
+## Koreader position sync server
+
+*This is a modified fork of b1n4ryj4n/koreader-sync with some additional logging and slightly modified endpoints.*
 
 ## Description
 
@@ -10,24 +13,6 @@ This is a simple implementation of the KOReader (https://github.com/koreader/kor
 * TinyDB: https://github.com/msiemens/tinydb
 * Uvicorn: https://www.uvicorn.org/
 * Python-dotenv: https://saurabh-kumar.com/python-dotenv/
-
-## Install and run
-
-```bash
-> pip install -r requirements.txt
-
-> uvicorn kosync:app --host 0.0.0.0 --port 8081
-
-```
-
-## Or via Docker
-
-```bash
-> docker build --rm=true --tag=kosync:latest .
-
-> docker compose up -d
-
-```
 
 ## Environment Variables
 
@@ -42,35 +27,48 @@ usually delete the *.sdr files with some cleaning tools.
 Enable/disable new registrations to the server. Useful if you want to run a private server for a few users, although it doesn't necessarily improve security by itself.
 Set to True (enabled) by default.
 
-## Dockerhub
+## Docker Installation
 
-There is also a dockerhub image available if you are not able to build yourself the image.
+### Prerequisites
+- Install [Docker](https://docs.docker.com/get-docker/)
+- Install [Docker Compose](https://docs.docker.com/compose/install/) (optional)
 
-For linux/amd64 you can use `docker pull b1n4ryj4n/koreader-sync` and for linux/arm `docker pull b1n4ryj4n/koreader-sync:arm`
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/donkevlar/KOReaderPyLink.git
+   cd KOReaderPyLink
+   ```
+2. Build and run the container, setting the environment variables:
+   ```sh
+   docker build -t koreaderpylink .
+   docker run -d -v $(pwd)/data:/app/data -p 8000:8000 --name koreaderpylink      -e RECEIVE_RANDOM_DEVICE_ID="False"      -e OPEN_REGISTRATIONS="True"      koreaderpylink
+   ```
+
+### Using Docker Compose (Optional)
+1. Copy `docker-compose.yml` (if provided) or create one:
+   ```yaml
+   version: '3'
+   services:
+     koreaderpylink:
+       build: .
+       ports:
+         - "8000:8000"
+       volumes:
+         - ./data:/app/data
+       environment:
+         - RECEIVE_RANDOM_DEVICE_ID=False
+         - OPEN_REGISTRATIONS=True
+   ```
+2. Start the service:
+   ```sh
+   docker-compose up -d
+   ```
+
+### Installing through Unraid Template
+This is also available via the unraid community application store. Search for `KOReaderPyLink`.
 
 ## Connection
 
 * Use http://IP:8081 as custom sync server
 * Recommendation: Setup a reverse proxy for example with Nginx Proxy Manager (https://nginxproxymanager.com/) to connect with https
-
-## Changelog
-
-## [0.0.5] - 2024-05-24
-### Added
-- Merged ["Option to disable registration of new user accounts by env var."](https://github.com/b1n4ryj4n/koreader-sync/pull/5)
-
-## [0.0.4] - 2023-10-29
-### Added
-- Added the HEALTHCHECK command (also accessible via http://IP:8081/healthstatus)
-
-## [0.0.3] - 2022-03-20
-### Added
-- Added an environment variable option to receive always a random device id
-
-## [0.0.2] - 2022-02-21
-### Added
-- Merged ["Dockerfile: use multi-stage build to optimize image size"](https://github.com/b1n4ryj4n/koreader-sync/pull/3)
-
-## [0.0.1] - 2021-09-15
-### Added
-- First version
