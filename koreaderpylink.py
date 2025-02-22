@@ -87,6 +87,7 @@ async def register(kosync_user: KosyncUser):
                 payload = DiscordPayload()
                 payload.content = f"User **{kosync_user.username}** has successfully registered to KOReaderPyLink!"
                 payload.username = "KOReaderPyLink"
+                # Default Icon for repo
                 payload.avatar_url = 'https://donkevlar.github.io/KOReaderPyLink/icon/pylink.png'
 
                 response = await send_webhook_discord(payload=payload)
