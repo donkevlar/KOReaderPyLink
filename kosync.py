@@ -19,12 +19,15 @@ load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+
 def str_to_bool(value: str) -> bool:
     return value.lower() in ("true", "1", "yes")
+
 
 class KosyncUser(BaseModel):
     username: Optional[str] = None
     password: Optional[str] = None
+
 
 class KosyncDocument(BaseModel):
     document: Optional[str] = None
@@ -32,6 +35,7 @@ class KosyncDocument(BaseModel):
     percentage: Optional[float] = None
     device: Optional[str] = None
     device_id: Optional[str] = None
+
 
 @app.post("/users/create")
 def register(kosync_user: KosyncUser):
@@ -49,6 +53,7 @@ def register(kosync_user: KosyncUser):
     else:
         return JSONResponse(status_code=403, content="This server is currently not accepting new registrations.")
 
+
 @app.get("/users/auth")
 def authorize(x_auth_user: Optional[str] = Header(None), x_auth_key: Optional[str] = Header(None)):
     if x_auth_user is None or x_auth_key is None:
@@ -61,6 +66,7 @@ def authorize(x_auth_user: Optional[str] = Header(None), x_auth_key: Optional[st
         else:
             return JSONResponse(status_code=401, content={"message": "Unauthorized"})
     return JSONResponse(status_code=403, content={"message": "Forbidden"})
+
 
 @app.put("/syncs/progress")
 def update_progress(kosync_document: KosyncDocument, x_auth_user: Optional[str] = Header(None),
@@ -88,6 +94,7 @@ def update_progress(kosync_document: KosyncDocument, x_auth_user: Optional[str] 
     else:
         return JSONResponse(status_code=401, content={"message": "Unauthorized"})
 
+
 @app.get("/syncs/progress/{document}")
 def get_progress(document: Optional[str] = None, x_auth_user: Optional[str] = Header(None),
                  x_auth_key: Optional[str] = Header(None)):
@@ -112,6 +119,7 @@ def get_progress(document: Optional[str] = None, x_auth_user: Optional[str] = He
                                          'timestamp': result["timestamp"]})
     else:
         return JSONResponse(status_code=401, content={"message": "Unauthorized"})
+
 
 @app.get("/healthstatus")
 def get_healthstatus():
