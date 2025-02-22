@@ -1,11 +1,9 @@
 # KOReaderPyLink
 ## Koreader position sync server
 
-*This is a modified fork of b1n4ryj4n/koreader-sync with some additional logging and slightly modified endpoints.*
-
 ## Description
 
-This is a simple implementation of the KOReader (https://github.com/koreader/koreader) position sync server for self-hosting at home which has docker support for arm and amd64 :) _This is a fork of https://github.com/myelsukov/koreader-sync but with a complete code rewrite._
+This is a simple implementation of the KOReader (https://github.com/koreader/koreader) position sync server for self-hosting at home which has docker support. *This is a modified fork of b1n4ryj4n/koreader-sync with some additional logging and slightly modified endpoints.*
  
 ## Dependencies
 
