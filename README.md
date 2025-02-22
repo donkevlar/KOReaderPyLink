@@ -1,5 +1,5 @@
 # KOReaderPyLink
-## Koreader position sync server
+**Koreader position sync server**
 
 ## Description
 
