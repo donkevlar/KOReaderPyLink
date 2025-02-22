@@ -40,7 +40,7 @@ Set to True (enabled) by default.
 2. Build and run the container, setting the environment variables:
    ```sh
    docker build -t koreaderpylink .
-   docker run -d -v $(pwd)/data:/app/data -p 8000:8000 --name koreaderpylink      -e RECEIVE_RANDOM_DEVICE_ID="False"      -e OPEN_REGISTRATIONS="True"      koreaderpylink
+   docker run -d -v $(pwd)/data:/app/data -p 8081:8081 --name koreaderpylink      -e RECEIVE_RANDOM_DEVICE_ID="False"      -e OPEN_REGISTRATIONS="True"      koreaderpylink
    ```
 
 ### Using Docker Compose (Optional)
@@ -51,7 +51,7 @@ Set to True (enabled) by default.
      koreaderpylink:
        build: .
        ports:
-         - "8000:8000"
+         - "8081:8081"
        volumes:
          - ./data:/app/data
        environment:
