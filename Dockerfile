@@ -36,7 +36,7 @@ WORKDIR /app
 
 COPY --from=builder /root/.local /root/.local
 
-COPY kosync.py .
+COPY koreaderpylink.py .
 
 EXPOSE 8081
 
