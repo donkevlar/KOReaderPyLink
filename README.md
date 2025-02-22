@@ -25,6 +25,14 @@ usually delete the *.sdr files with some cleaning tools.
 Enable/disable new registrations to the server. Useful if you want to run a private server for a few users, although it doesn't necessarily improve security by itself.
 Set to True (enabled) by default.
 
+* WEBHOOK_ENABLED ("True"|"False")
+
+Enable/disable the discord webhook functionality
+
+* WEBHOOK_URL (String)
+
+Discord webhook url, `WEBHOOK_ENABLED` must be set to `True` for this to take effect.
+
 ## Docker Installation
 
 ### Prerequisites
