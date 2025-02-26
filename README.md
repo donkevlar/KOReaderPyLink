@@ -60,4 +60,4 @@ This is also available via the unraid community application store. Search for `K
 
 ### KOReader Setup
 * 1) Navigate to the setup menu (Wrench and screwdriver icon)
-* 2) Under "Progress Sync" -> "Custom sync server". `IP:8081` or behind a proxy manager `sync.mydomanin.com` for example. Register using a username and password and you're done!
+* 2) Under "Progress Sync" -> "Custom sync server". Use your server address:  `http://IP:8081` or behind a proxy manager `https://sync.mydomanin.com`. Register using a username and password and you're done!
