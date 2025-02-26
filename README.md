@@ -57,3 +57,7 @@ This is also available via the unraid community application store. Search for `K
 
 * Use http://IP:8081 as custom sync server
 * Recommendation: Setup a reverse proxy for example with Nginx Proxy Manager (https://nginxproxymanager.com/) to connect with https
+
+### KOReader Setup
+* 1) Navigate to the setup menu (Wrench and screwdriver icon)
+* 2) Under "Progress Sync" -> "Custom sync server". `IP:8081` or behind a proxy manager `sync.mydomanin.com` for example. Register using a username and password and you're done!
