@@ -27,7 +27,7 @@ Set to True (enabled) by default.
 
 * WEBHOOK_ENABLED ("True"|"False")
 
-Enable/disable the discord webhook functionality
+Enable/disable the discord webhook functionality. Note: Currently only have registrations sending out a notification.
 
 * WEBHOOK_URL (String)
 
